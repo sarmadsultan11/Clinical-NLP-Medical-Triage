@@ -17,10 +17,11 @@ This project is an end-to-end Natural Language Processing (NLP) pipeline that au
 3. **Dependency Parsing & Negation Detection:** Leveraged `spaCy` dependency trees to analyze the syntactic relationship between words, successfully identifying when a symptom was denied by the patient rather than experienced.
 4. **Specialty Classification:** Vectorized the cleaned transcriptions using TF-IDF and trained a machine learning classifier to route the reports to 4 primary departments (Surgery, Internal Medicine, Orthopedics, Cardiology).
 
-## Results
-* Achieved an overall classification accuracy of **[Insert your accuracy %, e.g., 85%]**.
-* Successfully isolated department-specific vocabulary (e.g., Heart/Artery for Cardiology vs. Bone/Joint for Orthopedics).
-* **[Optional: Insert any interesting observation from your confusion matrix, e.g., "The model occasionally confused Surgery with Orthopedics due to overlapping terminology regarding incisions and bone repair."]**
+## Results & Implementation Details
+* **Dataset Processing:** Successfully processed a dataset of 4,999 clinical records, filtering down to the top 4 overlapping medical specialties (Surgery, Consult - History and Phy., Cardiovascular / Pulmonary, Orthopedic).
+* **Entity Extraction:** Implemented NLTK POS tagging to successfully separate anatomical features and symptoms (Nouns: 'ventricle', 'enlargement') from severity and descriptors (Adjectives: 'systolic', 'diastolic').
+* **Negation Logic:** Successfully implemented syntactic dependency parsing to output exact entity states (e.g., `{'Entity': 'pain', 'Status': 'Present'}`).
+* **Model Accuracy:** Achieved a baseline classification accuracy of **60.5%**. This is a strong initial metric given the high vocabulary overlap between classes like *Surgery* and *Orthopedic*.
 
 ## Dataset
-Trained on a subset of the [MTSamples Dataset](https://www.kaggle.com/datasets/tboyle10/medicaltranscriptions), filtered for the top most common medical specialties to ensure balanced class distributions.
+Trained on a 5,000-record subset of the [MTSamples Dataset](https://www.kaggle.com/datasets/tboyle10/medicaltranscriptions).
